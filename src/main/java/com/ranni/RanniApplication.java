@@ -8,7 +8,8 @@ public class RanniApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(RanniApplication.class, args);
-
+		
+		
 	}
 
 }
