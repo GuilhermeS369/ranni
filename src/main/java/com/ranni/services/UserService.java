@@ -32,5 +32,20 @@ public class UserService {
 	public void delete(Long id) {
 		repository.deleteById(id);
 	}
-	
+	// METODO QUE PUXA O OBJ DO ID E ENVIA JUNTO COM OBJ DO METODO
+	public User update(Long id, User obj) {
+		// PREPARA PARA RECEBER UM TIPO
+		User entity = repository.getOne(id);
+		// ATUALIZA A ENTITY COM OS DADOS DO OBJ
+		updateData(entity, obj);
+		// SALVA A ENTITY 
+		return repository.save(entity);
+	}
+	//METODO ONDE VC SELECIONA OQ QUER DAR UPDATE
+	private void updateData(User entity, User obj) {
+		entity.setName(obj.getName());
+		entity.setEmail(obj.getEmail());
+		entity.setPhone(obj.getPhone());
+	}
+		
 }
