@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.ranni.entities.User;
 import com.ranni.respositories.UserRepository;
+import com.ranni.services.exceptions.ResourceNotFoundException;
 
 @Service
 public class UserService {
@@ -22,7 +23,7 @@ public class UserService {
 		//TIPO OPTIONAL ARMAZENA O OBJ
 		Optional<User> obj = repository.findById(id);
 		//RETORNA O OBJ
-		return obj.get();
+		return obj.orElseThrow(()-> new ResourceNotFoundException(id));
 	}
 	
 	public User insert(User obj) {
