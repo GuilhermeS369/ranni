@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -39,7 +40,7 @@ public class UserResource {
 	// ENDPOINT DO CONTROLADORREST
 	// CAMINHO PARA ACESSAR:
 	@GetMapping(value = "/{id}")
-
+	// PARA LONG ID SER RECONHECIDO COMO VARIAVEL NA URL, USAMOS PATH
 	public ResponseEntity<User> findById(@PathVariable Long id) {
 
 		User obj = service.findById(id);
@@ -59,7 +60,18 @@ public class UserResource {
 		return ResponseEntity.created(uri).body(obj);
 		
 	}
-
+	
+	// ----------------------------------------------------------------------------------------
+	// OPERAÇÃO PARA DELETAR O USUARIO
+	// USAREMOS VOID POIS N RETORNARA NENHUM CORPO
+	// PARA LONG ID SER RECONHECIDO COMO VARIAVEL NA URL, USAMOS PATH
+	@DeleteMapping
+	public ResponseEntity<Void> delete(@PathVariable Long id){
+		service.delete(id);
+		
+		return ResponseEntity.noContent().build();
+		
+	}
 }
 
 
