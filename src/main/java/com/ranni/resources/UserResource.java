@@ -68,21 +68,23 @@ public class UserResource {
 	// OPERAÇÃO PARA DELETAR O USUARIO
 	// USAREMOS VOID POIS N RETORNARA NENHUM CORPO
 	// PARA LONG ID SER RECONHECIDO COMO VARIAVEL NA URL, USAMOS PATH
+	@CrossOrigin(origins = "http://127.0.0.1:5500")
 	@DeleteMapping(value = "/{id}")
 	public ResponseEntity<Void> delete(@PathVariable Long id){
 		service.delete(id);
 		
-		return ResponseEntity.noContent().header("Access-Control-Allow-Origin", "*").build();
+		return ResponseEntity.noContent().build();
 		
 	}
 	
 	// ----------------------------------------------------------------------------------------
 	// OPERAÇÃO PARA ATUALIZAR O USUARIO
 	// @PATHVARIABLE PARA PUXAR DA URL O ID
+	@CrossOrigin(origins = "http://127.0.0.1:5500")
 	@PutMapping(value = "/{id}")
 	public ResponseEntity<User> update (@PathVariable Long id, @RequestBody User obj){
 		obj = service.update(id, obj);
-		return ResponseEntity.ok().header("Access-Control-Allow-Origin", "*").body(obj);
+		return ResponseEntity.ok().body(obj);
 	}
 }
 
