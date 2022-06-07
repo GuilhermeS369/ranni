@@ -34,7 +34,7 @@ public class UserResource {
 	public ResponseEntity<List<User>> findAll() {
 		List<User> list = service.findAll();
 		// RESPONDE OK, E TRAZ COMO RESPOSTA UMA LISTA
-		return ResponseEntity.ok().header("Access-Control-Allow-Origin", "*").body(list);
+		return ResponseEntity.ok().header("Access-Control-Allow-Origin", "GET,PUT,POST,DELETE").body(list);
 	}
 
 	// ----------------------------------------------------------------------------------------
@@ -46,7 +46,7 @@ public class UserResource {
 
 		User obj = service.findById(id);
 
-		return ResponseEntity.ok().header("Access-Control-Allow-Origin", "*").body(obj);
+		return ResponseEntity.ok().header("Access-Control-Allow-Origin", "GET,PUT,POST,DELETE").body(obj);
 
 	}
 
@@ -58,7 +58,7 @@ public class UserResource {
 		obj = service.insert(obj);
 		// VARIAVEL DO TIPO URI
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
-		return ResponseEntity.created(uri).header("Access-Control-Allow-Origin", "*").body(obj);
+		return ResponseEntity.created(uri).header("Access-Control-Allow-Origin", "GET,PUT,POST,DELETE").body(obj);
 		
 	}
 	
@@ -70,7 +70,7 @@ public class UserResource {
 	public ResponseEntity<Void> delete(@PathVariable Long id){
 		service.delete(id);
 		
-		return ResponseEntity.noContent().header("Access-Control-Allow-Origin", "*").build();
+		return ResponseEntity.noContent().header("Access-Control-Allow-Origin", "GET,PUT,POST,DELETE").build();
 		
 	}
 	
@@ -80,7 +80,7 @@ public class UserResource {
 	@PutMapping(value = "/{id}")
 	public ResponseEntity<User> update (@PathVariable Long id, @RequestBody User obj){
 		obj = service.update(id, obj);
-		return ResponseEntity.ok().header("Access-Control-Allow-Origin", "*").body(obj);
+		return ResponseEntity.ok().header("Access-Control-Allow-Origin", "GET,PUT,POST,DELETE").body(obj);
 	}
 }
 
