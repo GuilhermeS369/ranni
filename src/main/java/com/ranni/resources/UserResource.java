@@ -60,7 +60,7 @@ public class UserResource {
 		obj = service.insert(obj);
 		// VARIAVEL DO TIPO URI
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
-		return ResponseEntity.created(uri).header("Access-Control-Allow-Origin", "*").body(obj);
+		return ResponseEntity.created(uri).body(obj);
 		
 	}
 	
