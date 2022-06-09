@@ -93,9 +93,9 @@ public class ProductResource {
 	// @PATHVARIABLE PARA PUXAR DA URL O ID
 	@CrossOrigin(origins = "http://127.0.0.1:5500")
 	@PutMapping(value = "/{id}/updatecat")
-	public ResponseEntity<Product> updateCat(@PathVariable Long id, @RequestBody Long idCat) {
+	public ResponseEntity<Long> updateCat(@PathVariable Long id, @RequestBody Long idCat) {
 		Product obj = service.updateCat(id, idCat);
-		return ResponseEntity.ok().body(obj);
+		return ResponseEntity.ok().build();
 	}
 
 }
