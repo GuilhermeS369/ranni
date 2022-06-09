@@ -66,14 +66,15 @@ public class ProductService {
 		}
 
 	}
+
 	// METODO PARA VINCULAR CATEGORIA A UM PRODUTO
-	public Category updateCat(Long id, Long idCat) {
+	public Category InsertCat(Long id, Long idCat) {
 
 		try {
 			// PREPARA PARA RECEBER UM TIPO
 			Product entity = repository.getReferenceById(id);
 			// ATUALIZA A ENTITY COM OS DADOS DO OBJ
-			updateCategories(entity, idCat);
+			insertCategory(entity, idCat);
 			// SALVA A ENTITY
 			repository.save(entity);
 			return category.findById(idCat);
@@ -84,17 +85,40 @@ public class ProductService {
 
 	}
 	
-	//METODO ONDE VC SELECIONA OQ QUER DAR UPDATE
-		private void updateData(Product entity, Product obj) {
-			entity.setName(obj.getName());
-			entity.setDescription(obj.getDescription());
-			entity.setImgUrl(obj.getImgUrl());
-			entity.setPrice(obj.getPrice());
-			
-		
+	public Category deleteCat(Long id, Long idCat) {
+
+		try {
+			// PREPARA PARA RECEBER UM TIPO
+			Product entity = repository.getReferenceById(id);
+			// ATUALIZA A ENTITY COM OS DADOS DO OBJ
+			deleteCategory(entity, idCat);
+			// SALVA A ENTITY
+			repository.save(entity);
+			return category.findById(idCat);
+
+		} catch (EntityNotFoundException e) {
+			throw new ResourceNotFoundException(id);
 		}
-		private void updateCategories(Product entity, Long idCat) {
-			entity.getCategories().add(category.findById(idCat));
-		}
+
+	}
+
+	// METODO ONDE VC SELECIONA OQ QUER DAR UPDATE
+	private void updateData(Product entity, Product obj) {
+		entity.setName(obj.getName());
+		entity.setDescription(obj.getDescription());
+		entity.setImgUrl(obj.getImgUrl());
+		entity.setPrice(obj.getPrice());
+
+	}
+
+	// METODO PARA INSERIR CATEGORIA NO PRODUTO
+	private void insertCategory(Product entity, Long idCat) {
+		entity.getCategories().add(category.findById(idCat));
+	}
+
+	// METODO PARA DELETE CATEGORIA NO PRODUTO
+	private void deleteCategory(Product entity, Long idCat) {
+		entity.getCategories().remove(category.findById(idCat));
+	}
 
 }

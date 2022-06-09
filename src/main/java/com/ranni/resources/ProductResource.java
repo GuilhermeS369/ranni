@@ -45,9 +45,7 @@ public class ProductResource {
 	@GetMapping(value = "/{id}")
 
 	public ResponseEntity<Product> findById(@PathVariable Long id) {
-
 		Product obj = service.findById(id);
-
 		return ResponseEntity.ok().body(obj);
 
 	}
@@ -89,13 +87,23 @@ public class ProductResource {
 	}
 
 	// ----------------------------------------------------------------------------------------
-	// OPERAÇÃO PARA ATUALIZAR O USUARIO
+	// OPERAÇÃO PARA INSERIR UMA CATEGORIA EM UM PRODUTO
 	// @PATHVARIABLE PARA PUXAR DA URL O ID
 	@CrossOrigin(origins = "http://127.0.0.1:5500")
-	@PutMapping(value = "/{id}/updatecat")
-	public ResponseEntity<Category> updateCat(@PathVariable Long id, @RequestBody Category cat) {
-		cat = service.updateCat(id, cat.getId());
+	@PutMapping(value = "/{id}/cat")
+	public ResponseEntity<Category> insertCat(@PathVariable Long id, @RequestBody Category cat) {
+		cat = service.InsertCat(id, cat.getId());
 		return ResponseEntity.ok().body(cat);
 	}
 
+	// ----------------------------------------------------------------------------------------
+	// OPERAÇÃO PARA DELETEAR UMA CATEGORIA EM UM PRODUTO
+	// @PATHVARIABLE PARA PUXAR DA URL O ID
+	@CrossOrigin(origins = "http://127.0.0.1:5500")
+	@DeleteMapping(value = "/{id}/cat")
+	public ResponseEntity<Category> deleteCat(@PathVariable Long id, @RequestBody Category cat) {
+		cat = service.deleteCat(id, cat.getId());
+		return ResponseEntity.ok().body(null);
+	}
+	
 }
