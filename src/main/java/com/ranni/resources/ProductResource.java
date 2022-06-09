@@ -94,8 +94,8 @@ public class ProductResource {
 	@CrossOrigin(origins = "http://127.0.0.1:5500")
 	@PutMapping(value = "/{id}/updatecat")
 	public ResponseEntity<Category> updateCat(@PathVariable Long id, @RequestBody Category cat) {
-		Product obj = service.updateCat(id, cat.getId());
-		return ResponseEntity.ok().build();
+		cat = service.updateCat(id, cat.getId());
+		return ResponseEntity.ok().body(cat);
 	}
 
 }

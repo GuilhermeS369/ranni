@@ -67,7 +67,7 @@ public class ProductService {
 
 	}
 	// METODO PARA VINCULAR CATEGORIA A UM PRODUTO
-	public Product updateCat(Long id, Long idCat) {
+	public Category updateCat(Long id, Long idCat) {
 
 		try {
 			// PREPARA PARA RECEBER UM TIPO
@@ -75,7 +75,8 @@ public class ProductService {
 			// ATUALIZA A ENTITY COM OS DADOS DO OBJ
 			updateCategories(entity, idCat);
 			// SALVA A ENTITY
-			return repository.save(entity);
+			repository.save(entity);
+			return category.findById(idCat);
 
 		} catch (EntityNotFoundException e) {
 			throw new ResourceNotFoundException(id);
