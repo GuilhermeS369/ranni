@@ -2,6 +2,7 @@ package com.ranni.services;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 import javax.persistence.EntityNotFoundException;
 
@@ -10,6 +11,7 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
+import com.ranni.entities.Category;
 import com.ranni.entities.Product;
 import com.ranni.respositories.ProductRepository;
 import com.ranni.services.exceptions.DatabaseException;
@@ -19,6 +21,8 @@ import com.ranni.services.exceptions.ResourceNotFoundException;
 public class ProductService {
 	@Autowired
 	private ProductRepository repository;
+	@Autowired
+	private CategoryService category;
 
 	public List<Product> findAll() {
 		return repository.findAll();
@@ -62,6 +66,22 @@ public class ProductService {
 		}
 
 	}
+	// METODO PARA VINCULAR CATEGORIA A UM PRODUTO
+	public Product updateCat(Long id, Long idCat) {
+
+		try {
+			// PREPARA PARA RECEBER UM TIPO
+			Product entity = repository.getReferenceById(id);
+			// ATUALIZA A ENTITY COM OS DADOS DO OBJ
+			updateCategories(entity, idCat);
+			// SALVA A ENTITY
+			return repository.save(entity);
+
+		} catch (EntityNotFoundException e) {
+			throw new ResourceNotFoundException(id);
+		}
+
+	}
 	
 	//METODO ONDE VC SELECIONA OQ QUER DAR UPDATE
 		private void updateData(Product entity, Product obj) {
@@ -69,7 +89,11 @@ public class ProductService {
 			entity.setDescription(obj.getDescription());
 			entity.setImgUrl(obj.getImgUrl());
 			entity.setPrice(obj.getPrice());
+			
 		
+		}
+		private void updateCategories(Product entity, Long idCat) {
+			entity.getCategories().add(category.findById(idCat));
 		}
 
 }
