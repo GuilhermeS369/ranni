@@ -22,7 +22,7 @@ import com.ranni.respositories.ProductRepository;
 import com.ranni.respositories.UserRepository;
 
 @Configuration
-@Profile("test")
+@Profile("dev")
 public class TestConifg implements CommandLineRunner {
 	//INJEÇÃO DE INDEPENDENCIA
 	@Autowired
