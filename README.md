@@ -63,7 +63,9 @@ Enviar no Body em formato JSON:
 }
 ```
 ____________________________________________________________________________________________________________________
+
 `PUT` Users
+
 ```yaml
 Alterar um usuario existente:
 localhost:8080/users/{ID}
@@ -78,7 +80,9 @@ Enviar no Body em formato JSON:
 }
 ```
 ____________________________________________________________________________________________________________________
+
 `DELETE` Users
+
 ```yaml
 localhost:8080/users/{ID}
 Exemplo:
@@ -86,7 +90,7 @@ localhost:8080/users/1
 ```
 ____________________________________________________________________________________________________________________
 
-######################################################################################################################
+____________________________________________________________________________________________________________________
 
 `GET` Product
 
@@ -159,7 +163,9 @@ Exemplo:
 localhost:8080/products/1
 ```
 ____________________________________________________________________________________________________________________
-######################################################################################################################
+
+____________________________________________________________________________________________________________________
+
 
 `GET` Category
 
@@ -184,7 +190,7 @@ localhost:8080/categories/
 
 Enviar no Body em formato JSON:
 {
-"name" : "Eletronics",
+"name" : "Eletronics"
 }
 ```
 ____________________________________________________________________________________________________________________
@@ -199,25 +205,91 @@ localhost:8080/categories/1
 
 Enviar no Body em formato JSON:
 {
-"name" : "Books",
+"name" : "Books"
 }
 ```
 ____________________________________________________________________________________________________________________
 `DELETE` Category
+
 ```yaml
 localhost:8080/categories/{ID}
 Exemplo:
 localhost:8080/categories/1
 ```
 ____________________________________________________________________________________________________________________
+____________________________________________________________________________________________________________________
+`GET` Orders
 
+```yaml
+
+Buscar todos:
+localhost:8080/orders
+```
+```yaml
+Buscar pelo ID:
+localhost:8080/orders/{ID}
+Exemplo:
+localhost:8080/orders/1
+```
+___________________________________________________________________________________________________________________
+
+`POST` Orders
+
+```yaml
+Inserir um novo pedido:
+localhost:8080/orders
+
+Enviar no Body em formato JSON:
+{
+     "moment": "2019-06-20T19:53:07Z",
+     "orderStatus" :1,
+     "client":{
+            "id": 1,
+            "name": "Maria Brown",
+            "email": "maria@gmail.com",
+            "phone": "988888888",
+            "password": "123456"
+        },
+        "items": [{
+                "quantity": 2,
+                "price": 90.5,
+                "subTotal": 181.0,
+                "product": {
+                    "id": 1,
+                    "name": "The Lord of the Rings",
+                    "description": "Lorem ipsum dolor sit amet, consectetur.",
+                    "price": 90.5,
+                    "imgUrl": "",
+                    "categories": [
+                        {
+                            "id": 2,
+                            "name": "Books"
+                        }
+                    ]
+                }
+           } 
+      ]
+       
+}
+
+```
+____________________________________________________________________________________________________________________
+
+`DELETE` Orders
+
+```yaml
+localhost:8080/orders/{ID}
+Exemplo:
+localhost:8080/orders/1
+```
+____________________________________________________________________________________________________________________
 
 ## 🛠️ Construído com
 
 * [SpringToolsSuite4](https://spring.io/guides/gs/sts/) - IDE
 * [SpringBoot](https://spring.io/) - Framework principal
 * [Maven](https://maven.apache.org/) - Gerente de Dependência
-* [PostgreSQL](https://www.postgresql.org/about/) - Banco de dados.
+* [PostgreSQL](https://www.postgresql.org/about/) - Banco de dados
 
 
 ## 🎁 Expressões de gratidão
