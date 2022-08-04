@@ -3,6 +3,8 @@
 ## O Projeto
 Esse é um projeto Back-end Webservices onde você pode ter um banco com produtos, categorias, usuarios e pedidos com status.
 
+O projeto hoje encontra-se online no heroku [teste aqui.](https://ranni-app.herokuapp.com/users)
+
 ## 📋 Pré-requsitos
 
 ### Instalar o PostgresSQL
@@ -30,6 +32,10 @@ Verificar se foi registrando a variavel de ambiente, caso contrario registrar.
 Baixar o App: https://drive.google.com/file/d/15ArxFHobg9o-XjGbST7AnHAifc6co6zS/view?usp=sharing
 
 Alocar os arquivos em questão e abrir o Executavel.bat.
+
+### Heroku
+
+Caso queria subir o projeto no Heroku, mudar no application.properties, o perfil ativo para "prod" e fazer as demais configurações no próprio Heroku.
 
 ## ⚙️ Usabilidade (Requisições) 
 
