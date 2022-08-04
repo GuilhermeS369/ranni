@@ -141,7 +141,7 @@ Enviar no Body em formato JSON:
 ```
 
 ```yaml
-Colocar uma categoria em um produto
+Colocar uma categoria em um produto:
 localhost:8080/products/{ID}/cat
 Exemplo:
 localhost:8080/products/1/cat
