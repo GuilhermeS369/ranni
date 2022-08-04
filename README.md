@@ -1,7 +1,7 @@
 # Ranni
 
 ## O Projeto
-Esse é um projeto Back-end (Webservices, JPA+Hibernate) onde você pode ter um banco com produtos, categorias, usuarios e pedidos com status.
+Esse é um projeto Back-end (Webservices, JPA+Hibernate) onde você pode ter um banco com produtos, categorias, usuários e pedidos com status.
 
 O projeto hoje encontra-se online no Heroku, [teste aqui.](https://ranni-app.herokuapp.com/users)
 
@@ -57,7 +57,7 @@ ________________________________________________________________________________
 `POST` Users
 
 ```yaml
-Inserir um novo usuario:
+Inserir um novo usuário:
 localhost:8080/users/
 
 Enviar no Body em formato JSON:
@@ -73,7 +73,7 @@ ________________________________________________________________________________
 `PUT` Users
 
 ```yaml
-Alterar um usuario existente:
+Alterar um usuário existente:
 localhost:8080/users/{ID}
 Exemplo:
 localhost:8080/users/1
