@@ -3,7 +3,7 @@
 ## O Projeto
 Esse é um projeto Back-end Webservices onde você pode ter um banco com produtos, categorias, usuarios e pedidos com status.
 
-O projeto hoje encontra-se online no heroku [teste aqui.](https://ranni-app.herokuapp.com/users)
+O projeto hoje encontra-se online no Heroku, [teste aqui.](https://ranni-app.herokuapp.com/users)
 
 ## 📋 Pré-requsitos
 
