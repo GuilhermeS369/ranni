@@ -2,10 +2,11 @@ package com.ranni;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Import;
 
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
-@SpringBootApplication(scanBasePackages = {"com.zuoyan.springboot.appmissionhall"})
+@SpringBootApplication
 @EnableSwagger2
 public class RanniApplication {
 
