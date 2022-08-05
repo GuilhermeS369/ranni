@@ -39,6 +39,11 @@ Caso queria subir o projeto no Heroku, mudar no application.properties, o perfil
 
 ## ⚙️ Usabilidade (Requisições) 
 
+Veja e teste as requisições por este link:
+https://ranni-app.herokuapp.com/swagger-ui.html#/
+
+Ou veja abaixo:
+
 `GET` Users
 
 ```yaml
