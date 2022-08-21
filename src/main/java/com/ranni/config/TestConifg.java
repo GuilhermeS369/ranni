@@ -73,9 +73,7 @@ public class TestConifg implements CommandLineRunner {
 				.build();
 				
 	}
-	
-	
-	@Override
+
 	public void run(String... args) throws Exception {
 		
 		Category cat1 = new Category(null, "Electronics"); 
@@ -101,9 +99,10 @@ public class TestConifg implements CommandLineRunner {
 				
 		productRepository.saveAll(Arrays.asList(p1, p2, p3, p4, p5))
 		
-;		User u1 = new User(null, "Maria Brown", "maria@gmail.com", "988888888", "123456"); 
-		User u2 = new User(null, "Alex Green", "alex@gmail.com", "977777777", "123456"); 
-		
+;		User u1 = new User(null, "Maria Brown","maria123", "maria@gmail.com", "988888888", "123456");
+		User u2 = new User(null, "Alex Green","verde123", "alex@gmail.com", "977777777", "123456");
+		u1.getRoles().add("managers");
+		u2.getRoles().add("users");
 		userRepository.saveAll(Arrays.asList(u1, u2));
 		
 		Order o1 = new Order(null, Instant.parse("2019-06-20T19:53:07Z"), OrderStatus.PAID, u1); 
@@ -123,15 +122,6 @@ public class TestConifg implements CommandLineRunner {
 		o1.setPayment(pay1);
 		
 		orderRepository.save(o1);
-		
-		
-		
-		
-		
-		
-		
-		
-				
-		
+
 	}
 }	

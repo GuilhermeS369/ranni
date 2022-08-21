@@ -49,9 +49,7 @@ public class UserService {
 	//GETBYID E GET ONE DESCONTINUADO, SUBSTITUIDO GETREFERENCEBYID
 	// METODO QUE PUXA O OBJ DO ID E ENVIA JUNTO COM OBJ DO METODO
 	public User update(Long id, User obj) {
-		
-		
-		
+
 		try {
 		// PREPARA PARA RECEBER UM TIPO
 		User entity = repository.getReferenceById(id);
@@ -63,10 +61,7 @@ public class UserService {
 		}catch(EntityNotFoundException e) {
 			throw new ResourceNotFoundException(id);
 		}
-		
-		
-		
-		
+
 	}
 	//METODO ONDE VC SELECIONA OQ QUER DAR UPDATE
 	private void updateData(User entity, User obj) {
