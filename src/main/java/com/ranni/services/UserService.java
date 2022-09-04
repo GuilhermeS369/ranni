@@ -8,6 +8,7 @@ import javax.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.ranni.entities.User;
@@ -19,7 +20,12 @@ import com.ranni.services.exceptions.ResourceNotFoundException;
 public class UserService {
 	@Autowired
 	private UserRepository repository;
-	
+	@Autowired
+	private PasswordEncoder encoder;
+
+	public UserService() {
+	}
+
 	public List<User> findAll(){
 		return repository.findAll();
 	}
@@ -32,6 +38,11 @@ public class UserService {
 	}
 	
 	public User insert(User obj) {
+
+		String pass = obj.getPassword();
+		//criptografando antes de salvar no banco
+		obj.setPassword(encoder.encode(pass));
+
 		return repository.save(obj);
 	}
 	

@@ -3,6 +3,7 @@ package com.ranni.config;
 import java.time.Instant;
 import java.util.Arrays;
 
+import com.ranni.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
@@ -22,6 +23,7 @@ import com.ranni.respositories.OrderRepository;
 import com.ranni.respositories.ProductRepository;
 import com.ranni.respositories.UserRepository;
 
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
@@ -50,29 +52,9 @@ public class TestConifg implements CommandLineRunner {
 	
 	@Autowired
 	private OrderItemRepository orderItemRepository;
-	
-	@Bean
-	public Docket api() {
-		return new Docket(DocumentationType.SWAGGER_2)
-				.select()
-				.apis(RequestHandlerSelectors.basePackage("com.ranni.resources"))
-				.paths(PathSelectors.any())
-				.build()
-				.apiInfo(buildApiInfo());
-				
-	}
-	
-	private ApiInfo buildApiInfo() {
-		return new ApiInfoBuilder()
-				.title("API RANNI")
-				.description("Api do projeto Ranni, controle de pedidos, com status e produtos")
-				.version("0.1")
-				.contact(new Contact("Guilherme",
-						"https://github.com/GuilhermeS369",
-						"Whatsapp: 11 963495981"))
-				.build();
-				
-	}
+
+	@Autowired
+	private UserService userService;
 
 	public void run(String... args) throws Exception {
 		
@@ -103,7 +85,12 @@ public class TestConifg implements CommandLineRunner {
 		User u2 = new User(null, "Alex Green","verde123", "alex@gmail.com", "977777777", "123456");
 		u1.getRoles().add("managers");
 		u2.getRoles().add("users");
-		userRepository.saveAll(Arrays.asList(u1, u2));
+
+		userService.insert(u1);
+		userService.insert(u2);
+
+
+
 		
 		Order o1 = new Order(null, Instant.parse("2019-06-20T19:53:07Z"), OrderStatus.PAID, u1); 
 		Order o2 = new Order(null, Instant.parse("2019-07-21T03:42:10Z"), OrderStatus.WAITING_PAYMENT, u2); 
@@ -122,6 +109,28 @@ public class TestConifg implements CommandLineRunner {
 		o1.setPayment(pay1);
 		
 		orderRepository.save(o1);
+
+	}
+	@Bean
+	public Docket api() {
+		return new Docket(DocumentationType.SWAGGER_2)
+				.select()
+				.apis(RequestHandlerSelectors.basePackage("com.ranni.resources"))
+				.paths(PathSelectors.any())
+				.build()
+				.apiInfo(buildApiInfo());
+
+	}
+
+	private ApiInfo buildApiInfo() {
+		return new ApiInfoBuilder()
+				.title("API RANNI")
+				.description("Api do projeto Ranni, controle de pedidos, com status e produtos")
+				.version("0.1")
+				.contact(new Contact("Guilherme",
+						"https://github.com/GuilhermeS369",
+						"Whatsapp: 11 963495981"))
+				.build();
 
 	}
 }	
