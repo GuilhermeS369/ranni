@@ -36,10 +36,7 @@ Alocar os arquivos em questão e abrir o Executavel.bat.
 
 Caso queria subir o projeto no Heroku, mudar no application.properties, o perfil ativo para "prod" e fazer as demais configurações no próprio Heroku.
 
-## ⚙️ Usabilidade (Requisições) 
-
-
-Ou veja abaixo:
+## ⚙️ Usabilidade (Requisições)
 
 `GET` Users
 
