@@ -17,7 +17,7 @@ import com.ranni.services.exceptions.ResourceNotFoundException;
 @ControllerAdvice
 public class ResourceExceptionHandler {
 	
-	//ANOTAÇÃO PARA INTERCEPTAR A REQUESIÇÃO QUE DEU EXCEÇÃO
+	//ANOTAÇÃO PARA INTERCEPTAR A REQUISIÇÃO QUE DEU EXCEÇÃO
 	@ExceptionHandler(ResourceNotFoundException.class)
 	public ResponseEntity<StandardError> resourceNotFound(ResourceNotFoundException e, HttpServletRequest request){
 		

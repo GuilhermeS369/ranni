@@ -30,7 +30,10 @@ public class WebSecurityConfig {
             "configuration/security",
             "/swagger-ui.html",
             "/webjars/**",
-            "/products/**"
+            "/products/**",
+            "/h2-console/**",
+            "/h2-console"
+
     } ;
 
     @Bean

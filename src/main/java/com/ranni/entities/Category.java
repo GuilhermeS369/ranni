@@ -25,7 +25,7 @@ public class Category implements Serializable {
 	private String name;
 		
 	@JsonIgnore	
-	@ManyToMany(mappedBy = "categories")
+	@ManyToMany(mappedBy = "categories") //INFORMO O MAPEAMENTO PARA QUAL NOME DA CLASSE SERÁ INSTANCIADO EM PRODUCT
 	private Set<Product> products = new HashSet<>();
 	
 	
