@@ -41,3 +41,9 @@ buildNumber.properties
 .classpath
 .idea
 .mvn
+.settings
+
+
+
+mvnw
+mvnw.cmd
