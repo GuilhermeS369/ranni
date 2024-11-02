@@ -3,7 +3,6 @@
 ## O Projeto
 Esse é um projeto Back-end (Webservices, JPA+Hibernate) onde você pode ter um banco com produtos, categorias, usuários e pedidos com status.
 
-O projeto hoje encontra-se online no Heroku, [teste aqui.](https://ranni-app.herokuapp.com/users)
 
 ## 📋 Pré-requsitos
 
@@ -39,8 +38,6 @@ Caso queria subir o projeto no Heroku, mudar no application.properties, o perfil
 
 ## ⚙️ Usabilidade (Requisições) 
 
-Veja e teste as requisições por este link:
-https://ranni-app.herokuapp.com/swagger-ui.html#/
 
 Ou veja abaixo:
 
